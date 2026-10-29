@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Page</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+      color: #222;
+      background: #fafafa;
+    }
+    h1 { color: #2a5db0; }
+    button {
+      padding: 8px 16px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #2a5db0;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #1e4687; }
+  </style>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <p>This is a simple web page for week 1.</p>
+
+  <h2>About</h2>
+  <ul>
+    <li>Plain HTML</li>
+    <li>A little CSS</li>
+    <li>A bit of JavaScript</li>
+  </ul>
+
+  <button id="btn">Click me</button>
+  <p id="count">Clicks: 0</p>
+
+  <script>
+    let clicks = 0;
+    document.getElementById("btn").addEventListener("click", () => {
+      clicks++;
+      document.getElementById("count").textContent = "Clicks: " + clicks;
+    });
+  </script>
+</body>
+</html>
