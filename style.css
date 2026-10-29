@@ -1,0 +1,283 @@
+:root {
+  --ink: #140a28;
+  --purple: #3a0ca3;
+  --pink: #ff3cae;
+  --cyan: #3cf0ff;
+  --yellow: #ffe93c;
+  --lime: #7dff6b;
+  --orange: #ff8a3c;
+  --panel: #fff6d8;
+  --panel-text: #2a1650;
+  --font-pixel: "Press Start 2P", "Courier New", monospace;
+  --font-body: Verdana, Tahoma, Geneva, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--panel-text);
+  background-color: #2b0a5e;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 60, 174, 0.45) 0 2px, transparent 3px),
+    radial-gradient(circle at 75% 75%, rgba(60, 240, 255, 0.45) 0 2px, transparent 3px),
+    linear-gradient(135deg, #2b0a5e, #5a189a 50%, #2b0a5e);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+  background-attachment: fixed;
+}
+
+.page {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ---------- Masthead ---------- */
+.masthead {
+  position: relative;
+  text-align: center;
+  padding: 28px 16px 20px;
+  background: linear-gradient(180deg, var(--pink), var(--orange) 60%, var(--yellow));
+  border: 4px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.logo {
+  margin: 0;
+  font-family: var(--font-pixel);
+  font-size: clamp(22px, 6.5vw, 54px);
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow:
+    4px 4px 0 var(--ink),
+    -2px -2px 0 var(--ink),
+    2px -2px 0 var(--ink),
+    -2px 2px 0 var(--ink);
+}
+
+.logo span { color: var(--cyan); }
+
+.tagline {
+  margin: 14px 0 18px;
+  font-weight: bold;
+  color: var(--ink);
+}
+
+.new-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  padding: 6px 8px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--ink);
+  background: var(--lime);
+  border: 3px solid var(--ink);
+  transform: rotate(8deg);
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink { to { visibility: hidden; } }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 12px;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--cyan);
+  border: 3px solid;
+  border-color: #fff var(--ink) var(--ink) #fff;
+}
+
+nav a:hover,
+nav a:focus-visible { background: var(--yellow); }
+
+nav a:active { border-color: var(--ink) #fff #fff var(--ink); }
+
+/* ---------- Panels ---------- */
+.panel {
+  margin-top: 24px;
+  background: var(--panel);
+  border: 4px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.panel-title {
+  margin: 0;
+  padding: 10px 12px;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  font-weight: normal;
+  color: #fff;
+  text-shadow: 2px 2px 0 var(--ink);
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  border-bottom: 4px solid var(--ink);
+}
+
+.panel-body { padding: 16px; }
+
+.panel h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--purple);
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ---------- Game screen ---------- */
+.screen {
+  padding: 8px;
+  background: var(--ink);
+  border: 3px solid;
+  border-color: #000 #5a4a7a #5a4a7a #000;
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  image-rendering: pixelated;
+  cursor: crosshair;
+  outline: none;
+}
+
+#game:focus-visible { box-shadow: 0 0 0 3px var(--yellow); }
+
+.hint {
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 22px;
+  margin: 1px 2px;
+  padding: 2px 5px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  text-align: center;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-bottom-width: 4px;
+  border-radius: 3px;
+}
+
+/* ---------- How to play ---------- */
+.rules { margin: 0; padding-left: 20px; }
+.rules li { margin-bottom: 6px; }
+
+.hp { color: #1fa83c; font-weight: bold; }
+.mp { color: #3050ff; font-weight: bold; }
+
+.controls { width: 100%; border-collapse: collapse; }
+.controls td { padding: 6px 4px; border-bottom: 2px dashed #e0cfa0; vertical-align: middle; }
+.controls td:first-child { white-space: nowrap; }
+
+.small { font-size: 12px; opacity: 0.85; }
+
+/* ---------- Faculty ---------- */
+.faculty {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.boss-card {
+  padding: 14px;
+  color: #fff;
+  border: 4px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.boss-card h3 { color: #fff; text-shadow: 2px 2px 0 var(--ink); font-size: 13px; margin: 4px 0; }
+.boss-card p { margin: 6px 0; }
+.boss-card.mech { background: linear-gradient(160deg, #ff5a3c, #b8206a); }
+.boss-card.em { background: linear-gradient(160deg, #7a3cff, #1a2a9a); }
+.boss-card.waves { background: linear-gradient(160deg, #ff3cae, #0b7a8e); }
+
+.portrait {
+  display: block;
+  width: 81px;
+  height: 99px;
+  margin: 0 auto 8px;
+  image-rendering: pixelated;
+}
+
+.course,
+.subject,
+.drops {
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.subject { color: var(--yellow); }
+.drops { color: var(--lime); }
+
+/* ---------- Skills ---------- */
+.table-wrap { overflow-x: auto; }
+
+.skills { width: 100%; border-collapse: collapse; min-width: 520px; }
+.skills th {
+  padding: 8px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  font-weight: normal;
+  text-align: left;
+  color: #fff;
+  background: var(--purple);
+}
+.skills td { padding: 8px; border-bottom: 2px dashed #e0cfa0; vertical-align: top; }
+.skills tbody tr:nth-child(odd) { background: #ffeeb0; }
+.skills td:first-child { font-weight: bold; white-space: nowrap; }
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 28px;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  line-height: 2;
+}
+
+footer p { margin: 0; }
+
+@media (max-width: 560px) {
+  .new-badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .new-badge { animation: none; }
+}

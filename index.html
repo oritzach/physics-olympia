@@ -3,50 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My First Page</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      max-width: 640px;
-      margin: 40px auto;
-      padding: 0 16px;
-      line-height: 1.6;
-      color: #222;
-      background: #fafafa;
-    }
-    h1 { color: #2a5db0; }
-    button {
-      padding: 8px 16px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-      background: #2a5db0;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover { background: #1e4687; }
-  </style>
+  <title>Degree Or Die</title>
+  <meta name="description" content="Degree Or Die: a colorful 2D physics bullet-hell where you fight your professors for a degree.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p>This is a simple web page for week 1.</p>
+  <div class="page">
+    <header class="masthead">
+      <p class="new-badge">NEW!</p>
+      <h1 class="logo">DEGREE <span>OR</span> DIE</h1>
+      <p class="tagline">A colorful physics bullet-hell. Beat your professors. Earn your degree.</p>
+      <nav>
+        <a href="#play">Play</a>
+        <a href="#how">How to play</a>
+        <a href="#faculty">The Faculty</a>
+        <a href="#skills">Skills</a>
+      </nav>
+    </header>
 
-  <h2>About</h2>
-  <ul>
-    <li>Plain HTML</li>
-    <li>A little CSS</li>
-    <li>A bit of JavaScript</li>
-  </ul>
+    <main>
+      <section id="play" class="panel">
+        <h2 class="panel-title">&#9654; PLAY</h2>
+        <div class="panel-body">
+          <div class="screen">
+            <canvas id="game" width="640" height="360" tabindex="0" aria-label="Degree Or Die game screen"></canvas>
+          </div>
+          <p class="hint">
+            Click the game to start. Needs a keyboard and mouse.
+            <kbd>P</kbd> pause &middot; <kbd>M</kbd> mute
+          </p>
+        </div>
+      </section>
 
-  <button id="btn">Click me</button>
-  <p id="count">Clicks: 0</p>
+      <section id="how" class="panel">
+        <h2 class="panel-title">&#9733; HOW TO PLAY</h2>
+        <div class="panel-body two-col">
+          <div>
+            <h3>The rules</h3>
+            <ul class="rules">
+              <li>Every professor is one level. Survive their exam and drain their HP bar.</li>
+              <li>Beating a professor gives you <strong>5 points</strong> and <strong>money</strong>. You get a bonus for the HP you have left.</li>
+              <li>Reach <strong>15 points</strong> to graduate and win the game.</li>
+              <li>Between levels, visit <em>Office Hours</em>: learn <strong>one of two</strong> skills from the professor you just beat. The other one is gone forever.</li>
+              <li>Spend leftover money to expand your <span class="hp">HP bar</span> and <span class="mp">mana bar</span>.</li>
+              <li>Fail an exam? Retake it. Your skills and upgrades are kept.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Controls</h3>
+            <table class="controls">
+              <tr><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / arrows</td><td>Move</td></tr>
+              <tr><td>Hold left mouse</td><td>Shoot toward the cursor</td></tr>
+              <tr><td><kbd>Space</kbd> / <kbd>J</kbd></td><td>Shoot with auto-aim</td></tr>
+              <tr><td><kbd>Shift</kbd></td><td>Focus: move slowly</td></tr>
+              <tr><td><kbd>Q</kbd> / <kbd>E</kbd></td><td>Use skill 1 / skill 2</td></tr>
+              <tr><td><kbd>P</kbd> / <kbd>Esc</kbd></td><td>Pause</td></tr>
+              <tr><td><kbd>M</kbd></td><td>Mute sound</td></tr>
+            </table>
+            <p class="small">Only the small pink dot in the middle of your hero can be hit.</p>
+          </div>
+        </div>
+      </section>
 
-  <script>
-    let clicks = 0;
-    document.getElementById("btn").addEventListener("click", () => {
-      clicks++;
-      document.getElementById("count").textContent = "Clicks: " + clicks;
-    });
-  </script>
+      <section id="faculty" class="panel">
+        <h2 class="panel-title">&#9760; THE FACULTY</h2>
+        <div class="panel-body faculty">
+          <article class="boss-card mech">
+            <canvas class="portrait" data-boss="0" width="54" height="66" aria-hidden="true"></canvas>
+            <p class="course">LEVEL 1 &middot; PHYS 101</p>
+            <h3>Prof. Inertia</h3>
+            <p class="subject">Mechanics</p>
+            <p>Drops apples under real gravity, lobs bullets in perfect parabolas, swings a pendulum spray and charges at you with full momentum.</p>
+            <p class="drops">Drops: Momentum Dash or Pendulum Orbit</p>
+          </article>
+          <article class="boss-card em">
+            <canvas class="portrait" data-boss="1" width="54" height="66" aria-hidden="true"></canvas>
+            <p class="course">LEVEL 2 &middot; PHYS 102</p>
+            <h3>Prof. Voltz</h3>
+            <p class="subject">Electricity &amp; Magnetism</p>
+            <p>Calls down lightning columns, fires charges that curl in a magnetic field, plants capacitor mines and blasts Coulomb bursts.</p>
+            <p class="drops">Drops: Chain Lightning or Faraday Cage</p>
+          </article>
+          <article class="boss-card waves">
+            <canvas class="portrait" data-boss="2" width="54" height="66" aria-hidden="true"></canvas>
+            <p class="course">LEVEL 3 &middot; PHYS 201</p>
+            <h3>Prof. Amplitude</h3>
+            <p class="subject">Waves</p>
+            <p>Shoots sine-wave streams, sends shockwave rings with a single gap, and sets up standing waves. Hint: stand on the nodes.</p>
+            <p class="drops">The final exam.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="panel">
+        <h2 class="panel-title">&#9889; SKILLS</h2>
+        <div class="panel-body">
+          <div class="table-wrap">
+            <table class="skills">
+              <thead>
+                <tr><th>Skill</th><th>From</th><th>Mana</th><th>Cooldown</th><th>Effect</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Momentum Dash</td><td>Mechanics</td><td>15</td><td>0.8s</td><td>Burst in the direction you move. You can't be hit while dashing.</td></tr>
+                <tr><td>Pendulum Orbit</td><td>Mechanics</td><td>35</td><td>9s</td><td>For 6s, two masses orbit you and smash bullets. Each smash heals 1 HP.</td></tr>
+                <tr><td>Chain Lightning</td><td>E&amp;M</td><td>40</td><td>4s</td><td>Zaps the professor for 60 damage instantly.</td></tr>
+                <tr><td>Faraday Cage</td><td>E&amp;M</td><td>45</td><td>10s</td><td>A 3s bubble: no damage taken, and it erases bullets it touches.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with plain HTML, CSS &amp; JavaScript &middot; no plugins required</p>
+      <p class="small">Best viewed at 1024&times;768 &middot; &copy; 2026 Degree Or Die</p>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
 </body>
 </html>
